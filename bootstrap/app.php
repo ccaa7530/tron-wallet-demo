@@ -1,6 +1,7 @@
 <?php
 
 use App\Console\Commands\WatchTronBlock;
+use App\Jobs\CrawlSite;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
     })
     ->withSchedule(function (Schedule $schedule) {
-        // $schedule->call(new WatchTronBlock, [ 'x' => 'test' ])->everyFiveSeconds();
+        $schedule->job(new CrawlSite)->everyMinute();
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

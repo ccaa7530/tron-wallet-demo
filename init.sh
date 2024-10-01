@@ -17,3 +17,6 @@ docker run --rm \
 
 # 更改專案USER權限
 sudo chown -R $USER .
+
+
+docker run --rm --pull=always -v "$(pwd)":/opt -w /opt laravelsail/php82-composer:latest bash -c "composer install --ignore-platform-reqs"
